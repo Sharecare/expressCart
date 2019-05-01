@@ -1,0 +1,15 @@
+pipeline:
+  package:
+    image: nexus.admin.sharecare.com/drone-nexus-docker
+    version: jq -r .version package.json
+    privileged: true
+    volumes: [ '/secrets:/secrets' ]
+    when:
+      event: [ push ]
+
+  deploy:
+    image: nexus.admin.sharecare.com/drone-kubernetes-deploy
+    version: jq -r .version package.json
+    namespace: dev
+    when:
+      event: [ push ]

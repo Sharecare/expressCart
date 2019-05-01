@@ -1,0 +1,8 @@
+name: expresscart
+ports:
+  external: 80
+  container: 1111
+spec: node
+monitor: false
+team: maestro
+stripPrefix: false 
