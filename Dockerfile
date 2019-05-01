@@ -2,8 +2,6 @@ FROM mhart/alpine-node:8
 
 ENV NODE_VERSION 8.9.4
 
-RUN apk add --no-cache make gcc g++ python bash
-
 WORKDIR /var/expressCart
 
 COPY lib/ /var/expressCart/lib/
@@ -17,7 +15,7 @@ COPY app.js /var/expressCart/
 COPY package.json /var/expressCart/
 COPY gulpfile.js /var/expressCart/
 
-RUN npm install
+RUN npm install --prod
 
 VOLUME /var/expressCart/data
 

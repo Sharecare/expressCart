@@ -275,6 +275,11 @@ app.use('/paypal', paypal);
 app.use('/stripe', stripe);
 app.use('/authorizenet', authorizenet);
 
+app.get('/admin/initialize', common.restrict, (req, res) => {
+    common.testData(app);
+    res.redirect('/admin/settings/menu');
+});
+
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
     let err = new Error('Not Found');
